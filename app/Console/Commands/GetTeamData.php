@@ -42,7 +42,7 @@ class GetTeamData extends Command
         //Get Football Data
         try{
             $response = Http::withHeaders([
-                'x-rapidapi-key' => '554f62a8fdmsh111afca69ab2f43p1d3609jsn33c5c390b13f',
+                'x-rapidapi-key' => env('FOOTBALL_KEY'),
                 'x-rapidapi-host' => 'football-data1.p.rapidapi.com'
             ])->get('https://football-data1.p.rapidapi.com/tournament/teams?tournamentId=1');
 
@@ -66,7 +66,7 @@ class GetTeamData extends Command
         //Get Basketball Data
         try{
             $response = Http::withHeaders([
-                'x-rapidapi-key' => '554f62a8fdmsh111afca69ab2f43p1d3609jsn33c5c390b13f',
+                'x-rapidapi-key' => env('BASKETBALL_KEY'),
                 'x-rapidapi-host' => 'free-nba.p.rapidapi.com'
             ])->get('https://free-nba.p.rapidapi.com/teams?page=0');
         }catch(\Illuminate\Http\Client\ConnectionException $e){

@@ -9,13 +9,17 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
 use App\Models\FootballTeam;
-
+use Illuminate\Support\Facades\DB;
 
 class TeamsController extends Controller
 {
     public function getFavoriteTeam(Request $request){
         $user = \Auth::user();
-        return response()->json($user);
+        $favoriteTeam = DB::table('favorite_teams')
+            ->select('favorite_team')
+            ->where('user_id', $user->id)
+            ->get();
+        return response()->json($favoriteTeam);
     }
 
     public function setFavoriteTeam(Request $request){
